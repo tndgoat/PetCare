@@ -1,6 +1,7 @@
 import axios from 'axios';
 import queryString from 'query-string';
 import { appInfo } from '../constants/appInfo';
+import store from '../redux/store';
 
 const axiosClient = axios.create({
   baseURL: appInfo.BASE_URL,
@@ -9,8 +10,14 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   async (config: any) => {
+    // Assuming you're storing the token in Redux, you can access it like this:
+    const token = store.getState().authReducer.authData.token;
+
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+
     config.headers = {
-      Authorization: '',
       Accept: 'application/json',
       ...config.headers,
     };

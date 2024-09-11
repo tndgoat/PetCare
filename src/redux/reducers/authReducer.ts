@@ -1,14 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface AuthState {
-  Success: string;
-  SessionId: string;
+  token: string;
+  refreshToken: string;
+  id: number | null;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  image: string;
   error: string;
 }
 
 const initialState: AuthState = {
-  Success: '',
-  SessionId: '',
+  token: '',
+  refreshToken: '',
+  id: null,
+  username: '',
+  email: '',
+  firstName: '',
+  lastName: '',
+  gender: '',
+  image: '',
   error: '',
 };
 
@@ -22,7 +36,7 @@ const authSlice = createSlice({
       state.authData = action.payload;
     },
 
-    removeAuth: (state, action) => {
+    removeAuth: (state) => {
       state.authData = initialState;
     },
   },
