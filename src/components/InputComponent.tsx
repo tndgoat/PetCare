@@ -1,17 +1,13 @@
 import {
   View,
-  Text,
   TouchableOpacity,
   TextInput,
   StyleSheet,
-  TextInputProps,
   KeyboardType,
 } from 'react-native';
-import React, {ReactNode, useState} from 'react';
-import {Touchable} from 'react-native';
-import {EyeSlash} from 'iconsax-react-native';
-import {appColor} from '../constants/appColor';
-import {globalStyles} from '../styles/globalStyles';
+import React, { ReactNode, useState } from 'react';
+import { appColor } from '../constants/appColor';
+import { globalStyles } from '../styles/globalStyles';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
@@ -43,15 +39,15 @@ const InputComponent = (props: Props) => {
   const [isShowPass, setIsShowPass] = useState(isPassword ?? false);
 
   return (
-    <View style={[styles.inputContainer]}>
+    <View style={[localStyles.inputContainer]}>
       {affix ?? affix}
       <TextInput
-        style={[styles.input, globalStyles.text]}
+        style={[localStyles.input, globalStyles.text]}
         value={value}
         placeholder={placeholder ?? ''}
         onChangeText={val => onChange(val)}
         secureTextEntry={isShowPass}
-        placeholderTextColor={'#747688'}
+        placeholderTextColor={'#A1A8B0'}
         keyboardType={type ?? 'default'}
         autoCapitalize="none"
         onEndEditing={onEnd}
@@ -80,18 +76,18 @@ const InputComponent = (props: Props) => {
 
 export default InputComponent;
 
-const styles = StyleSheet.create({
+const localStyles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
-    borderRadius: 12,
+    borderRadius: 24,
     borderWidth: 1,
-    borderColor: appColor.gray3,
+    borderColor: '#E5E7EB',
     width: '100%',
     minHeight: 56,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 15,
-    backgroundColor: appColor.white,
+    backgroundColor: '#F9FAFB',
     marginBottom: 19,
   },
 

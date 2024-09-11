@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const ProfileNavigator = () => {
   const Stack = createNativeStackNavigator();
-  
+
   return (
     <Stack.Navigator
       screenOptions={{

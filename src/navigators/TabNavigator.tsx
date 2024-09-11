@@ -4,10 +4,10 @@ import HomeNavigator from './HomeNavigator';
 import NotifiNavigator from './NotifiNavigator';
 import ProfileNavigator from './ProfileNavigator';
 import { appColor } from '../constants/appColor';
+import { User } from 'iconsax-react-native';
 import { TextComponent } from '../components';
 import { Platform } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import { User } from 'iconsax-react-native';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();

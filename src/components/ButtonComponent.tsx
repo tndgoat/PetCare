@@ -1,12 +1,12 @@
 import {
   View,
-  Text,
   StyleProp,
   ViewStyle,
   TextStyle,
   TouchableOpacity,
+  StyleSheet,
 } from 'react-native';
-import React, {ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import { TextComponent } from '.';
 import { globalStyles } from '../styles/globalStyles';
 import { appColor } from '../constants/appColor';
@@ -41,8 +41,12 @@ const ButtonComponent = (props: Props) => {
     disable,
   } = props;
 
+  const dynamicTextStyles = {
+    marginLeft: icon ? 12 : 0,
+  };
+
   return type === 'primary' ? (
-    <View style={{alignItems: 'center'}}>
+    <View style={localStyles.center}>
       <TouchableOpacity
         disabled={disable}
         onPress={onPress}
@@ -53,25 +57,17 @@ const ButtonComponent = (props: Props) => {
             backgroundColor: color
               ? color
               : disable
-              ? appColor.gray4
-              : appColor.primary,
-            marginBottom: 17,
-            width: '90%',
+                ? appColor.gray4
+                : appColor.primary,
           },
+          localStyles.button,
           styles,
         ]}>
         {icon && iconFlex === 'left' && icon}
         <TextComponent
           text={text}
           color={textColor ?? appColor.white}
-          styles={[
-            textStyles,
-            {
-              marginLeft: icon ? 12 : 0,
-              fontSize: 16,
-              textAlign: 'center',
-            },
-          ]}
+          styles={[textStyles, localStyles.text, dynamicTextStyles]}
           flex={icon && iconFlex === 'right' ? 1 : 0}
           font={textFont ?? fontFamily.medium}
         />
@@ -90,3 +86,17 @@ const ButtonComponent = (props: Props) => {
 };
 
 export default ButtonComponent;
+
+const localStyles = StyleSheet.create({
+  center: {
+    alignItems: 'center',
+  },
+  button: {
+    marginBottom: 17,
+    width: '90%',
+  },
+  text: {
+    fontSize: 16,
+    textAlign: 'center',
+  },
+});

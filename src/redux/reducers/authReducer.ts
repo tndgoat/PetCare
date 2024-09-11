@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 interface AuthState {
-  id: string;
-  email: string;
-  accesstoken: string;
+  Success: string;
+  SessionId: string;
+  error: string;
 }
 
 const initialState: AuthState = {
-  id: '',
-  email: '',
-  accesstoken: '',
+  Success: '',
+  SessionId: '',
+  error: '',
 };
 
 const authSlice = createSlice({
@@ -29,6 +29,6 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const {addAuth, removeAuth} = authSlice.actions;
+export const { addAuth, removeAuth } = authSlice.actions;
 
 export const authSelector = (state: any) => state.authReducer.authData;
