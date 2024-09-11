@@ -1,6 +1,4 @@
-import AsyncStorage, {
-  useAsyncStorage,
-} from '@react-native-async-storage/async-storage';
+import AsyncStorage, { useAsyncStorage } from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addAuth, authSelector } from '../redux/reducers/authReducer';
@@ -10,11 +8,8 @@ import { SplashScreen } from '../screens';
 
 const AppRouters = () => {
   const [isShowSplash, setIsShowSplash] = useState(true);
-
   const { getItem } = useAsyncStorage('auth');
-
   const auth = useSelector(authSelector);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,14 +24,16 @@ const AppRouters = () => {
   const checkLogin = async () => {
     const res = await getItem();
 
-    res && dispatch(addAuth(JSON.parse(res)));
+    if (res) {
+      dispatch(addAuth(JSON.parse(res)));
+    }
   };
 
   return (
     <>
       {isShowSplash ? (
         <SplashScreen />
-      ) : auth.SessionId ? (
+      ) : 1 >2 ? (
         <MainNavigator />
       ) : (
         <AuthNavigator />

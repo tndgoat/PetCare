@@ -20,7 +20,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fontFamily } from '../../constants/fontFamily';
 
 const LoginScreen = ({ navigation }: any) => {
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isRemember, setIsRemember] = useState(true);
   const [isDisable, setIsDisable] = useState(true);
@@ -28,22 +28,22 @@ const LoginScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userNameValidation = Validate.email(userName);
+    const userNameValidation = Validate.email(username);
 
-    if (!userName || !password || !userNameValidation) {
+    if (!username || !password || !userNameValidation) {
       setIsDisable(true);
     } else {
       setIsDisable(false);
     }
-  }, [userName, password]);
+  }, [username, password]);
 
   const handleLogin = async () => {
-    const userNameValidation = Validate.email(userName);
+    const userNameValidation = Validate.email(username);
     if (userNameValidation) {
       try {
         const res = await authenticationAPI.HandleAuthentication(
           '/login',
-          { userName, password },
+          { username, password },
           'post',
         );
 
@@ -51,7 +51,7 @@ const LoginScreen = ({ navigation }: any) => {
 
         await AsyncStorage.setItem(
           'auth',
-          isRemember ? JSON.stringify(res.data) : userName,
+          isRemember ? JSON.stringify(res.data) : username,
         );
       } catch (error) {
         console.log(error);
@@ -87,9 +87,9 @@ const LoginScreen = ({ navigation }: any) => {
         />
         <SpaceComponent height={21} />
         <InputComponent
-          value={userName}
+          value={username}
           placeholder="Enter your username"
-          onChange={val => setUserName(val)}
+          onChange={val => setUsername(val)}
           allowClear
           affix={<Sms size={22} color={appColor.gray} />}
         />

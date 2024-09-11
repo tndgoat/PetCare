@@ -10,17 +10,17 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(
   async (config: any) => {
-    // Assuming you're storing the token in Redux, you can access it like this:
-    const token = store.getState().authReducer.authData.token;
+    const state = store.getState();
+    const token = state.authReducer.authData.token;
 
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers = {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        ...config.headers,
+      };
     }
 
-    config.headers = {
-      Accept: 'application/json',
-      ...config.headers,
-    };
     return config;
   },
   error => {
