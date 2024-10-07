@@ -28,7 +28,7 @@ const LoginScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userNameValidation = Validate.email(username);
+    const userNameValidation = Validate.username(username);
 
     if (!username || !password || !userNameValidation) {
       setIsDisable(true);
@@ -38,7 +38,7 @@ const LoginScreen = ({ navigation }: any) => {
   }, [username, password]);
 
   const handleLogin = async () => {
-    const userNameValidation = Validate.email(username);
+    const userNameValidation = Validate.username(username);
     if (userNameValidation) {
       try {
         const res = await authenticationAPI.HandleAuthentication(

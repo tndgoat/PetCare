@@ -6,9 +6,10 @@ import {
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
-import { SpaceComponent } from '../../components';
+import { SpaceComponent, TextComponent } from '../../components';
 import { appInfo } from '../../constants/appInfo';
 import { appColor } from '../../constants/appColor';
+import { fontFamily } from '../../constants/fontFamily';
 
 const logo = require('../../assets/images/logo.png');
 
@@ -17,6 +18,15 @@ const SplashScreen = () => {
     <SafeAreaView style={localStyles.container}>
       <View style={localStyles.innerContainer}>
         <Image source={logo} style={localStyles.logo} />
+        <SpaceComponent height={16} />
+        <TextComponent
+          size={50}
+          title
+          text="PetCare"
+          font={fontFamily.bold}
+          color={appColor.white}
+          styles={{ textAlign: 'center' }}
+        />
         <SpaceComponent height={16} />
         <ActivityIndicator color={appColor.gray} size={20} />
       </View>

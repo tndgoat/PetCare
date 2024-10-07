@@ -1,99 +1,70 @@
-import React from 'react';
-import { Image, View, StyleSheet } from 'react-native';
+import { ArrowRight2 } from 'iconsax-react-native';
+import React, { useEffect, useState } from 'react';
+import { StatusBar, View } from 'react-native';
+import Swiper from 'react-native-swiper';
 import { appColor } from '../../constants/appColor';
-import { appInfo } from '../../constants/appInfo';
 import { globalStyles } from '../../styles/globalStyles';
-import { ButtonComponent, TextComponent } from '../../components';
-import { fontFamily } from '../../constants/fontFamily';
+import Swiper1 from './components/Swiper1';
+import Swiper2 from './components/Swiper2';
+import Swiper3 from './components/Swiper3';
+import { useIsFocused } from '@react-navigation/native';
+import { SectionComponent, RowComponent, ButtonComponent } from '../../components';
 
-const OnboardingScreen = ({ navigation }: any) => {
+const OnboardingScreen = ({ navigation, route }: any) => {
+  const { authState } = route.params;
+
+  const [index, setIndex] = useState(0);
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    setIndex(0);
+  }, [isFocused]);
+
   return (
-    <View style={[globalStyles.container, localStyles.container]}>
-      {/* Top Section: Logo and Text */}
-      <View style={localStyles.topSection}>
-        <Image
-          source={require('../../assets/images/logo.png')}
-          style={localStyles.logo}
-        />
-        <TextComponent
-          text="Let's get started!"
-          color={appColor.text1}
-          size={22}
-          font={fontFamily.bold}
-          styles={localStyles.title}
-        />
-        <TextComponent
-          text="Login to enjoy the features we've"
-          color={appColor.text2}
-          size={16}
-          font={fontFamily.regular}
-          styles={localStyles.subtitle}
-        />
-        <TextComponent
-          text="provided, and stay healthy!"
-          color={appColor.text2}
-          size={16}
-          font={fontFamily.regular}
-          styles={localStyles.subtitle}
-        />
-      </View>
-
-      {/* Bottom Section: Buttons */}
-      <View style={localStyles.bottomSection}>
-        <ButtonComponent
-          color={appColor.primary}
-          styles={localStyles.button}
-          onPress={() => navigation.navigate('LoginScreen')}
-          text="Login"
-          type="primary"
-        />
-        <ButtonComponent
-          color={appColor.white}
-          styles={[localStyles.button, localStyles.signupButton]}
-          textColor={appColor.primary}
-          onPress={() => navigation.navigate('SignUpScreen')}
-          text="Sign Up"
-          type="primary"
-        />
-      </View>
+    <View style={[globalStyles.container, { paddingTop: 20 }]}>
+      <StatusBar hidden />
+      <Swiper
+        index={index}
+        onIndexChanged={int => setIndex(int)}
+        showsPagination={false}
+        loop={false}>
+        <Swiper1 />
+        <Swiper2 />
+        <Swiper3 />
+      </Swiper>
+      <SectionComponent>
+        <RowComponent justify="space-between">
+          <RowComponent>
+            {Array.from({ length: 3 }).map((_item, ind) => (
+              <View
+                key={`dot${ind}`}
+                style={{
+                  height: 6,
+                  backgroundColor: ind === index ? appColor.primary : appColor.gray2,
+                  borderRadius: 100,
+                  marginRight: 4,
+                  width: ind === index ? 16 : 6,
+                }}
+              />
+            ))}
+          </RowComponent>
+          <ButtonComponent
+            color={appColor.primary}
+            text=''
+            styles={{
+              width: 50,
+              height: 50,
+            }}
+            icon={<ArrowRight2 size={24} color="white" />}
+            onPress={() =>
+              index === 2 ? navigation.navigate(authState) : setIndex(index + 1)
+            }
+          />
+        </RowComponent>
+      </SectionComponent>
     </View>
   );
 };
-
-const localStyles = StyleSheet.create({
-  container: {
-    justifyContent: 'flex-start',
-  },
-  topSection: {
-    flex: 0.6,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logo: {
-    width: appInfo.sizes.WIDTH * 0.5,
-    resizeMode: 'contain',
-  },
-  title: {
-    textAlign: 'center',
-  },
-  subtitle: {
-    textAlign: 'center',
-    marginTop: 2,
-  },
-  bottomSection: {
-    flex: 0.4,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    width: 263,
-    height: 56,
-    borderRadius: 32,
-  },
-  signupButton: {
-    borderColor: appColor.primary,
-    borderWidth: 1,
-  },
-});
 
 export default OnboardingScreen;

@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import React, { ReactNode } from 'react';
-import { TextComponent } from '.';
+import TextComponent from './TextComponent';
 import { globalStyles } from '../styles/globalStyles';
 import { appColor } from '../constants/appColor';
 import { fontFamily } from '../constants/fontFamily';

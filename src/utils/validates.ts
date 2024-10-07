@@ -1,5 +1,5 @@
 export class Validate {
-  static email = (val: string) => {
+  static username = (val: string) => {
     return val.length >= 6;
   };
 
