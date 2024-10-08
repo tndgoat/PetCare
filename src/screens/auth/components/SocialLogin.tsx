@@ -8,13 +8,12 @@ import {
 } from '../../../components';
 import {appColor} from '../../../constants/appColor';
 import {fontFamily} from '../../../constants/fontFamily';
-import {StyleSheet} from 'react-native';
 
 const SocialLogin = () => {
   return (
     <SectionComponent>
       <TextComponent
-        styles={localStyles.orText}
+        styles={{textAlign: 'center'}}
         text="OR"
         color={appColor.gray4}
         size={16}
@@ -23,42 +22,39 @@ const SocialLogin = () => {
       <SpaceComponent height={16} />
 
       <ButtonComponent
-        type="primary"
-        color={appColor.white}
-        textColor={appColor.text}
-        text="Login with Google"
-        textFont={fontFamily.semiBold}
-        iconFlex="left"
         icon={<Google />}
+        text="Login with Google"
+        type="primary"
+        color={appColor.white}
+        styles={{justifyContent: 'center', alignItems: 'flex-start'}}
+        textColor={appColor.text}
+        textFont={fontFamily.semiBold}
+        iconFlex="right"
       />
 
       <ButtonComponent
-        type="primary"
-        color={appColor.white}
-        textColor={appColor.text}
-        text="Login with Apple"
-        textFont={fontFamily.semiBold}
-        iconFlex="left"
         icon={<Apple />}
+        text="Login with Apple"
+        type="primary"
+        color={appColor.white}
+        styles={{justifyContent: 'center', alignItems: 'flex-start'}}
+        textColor={appColor.text}
+        textFont={fontFamily.semiBold}
+        iconFlex="right"
       />
 
       <ButtonComponent
+        icon={<Facebook />}
+        text="Login with Facebook"
         type="primary"
         color={appColor.white}
+        styles={{justifyContent: 'center', alignItems: 'flex-start'}}
         textColor={appColor.text}
-        text="Login with Facebook"
         textFont={fontFamily.semiBold}
-        iconFlex="left"
-        icon={<Facebook />}
+        iconFlex="right"
       />
     </SectionComponent>
   );
 };
 
 export default SocialLogin;
-
-const localStyles = StyleSheet.create({
-  orText: {
-    textAlign: 'center',
-  },
-});

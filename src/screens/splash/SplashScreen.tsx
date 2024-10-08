@@ -10,7 +10,7 @@ import {SpaceComponent, TextComponent} from '../../components';
 import {appInfo} from '../../constants/appInfo';
 import {appColor} from '../../constants/appColor';
 
-const logo = require('../../assets/text-logo.png');
+const logo = require('../../assets/text-logo-w.png');
 
 const SplashScreen = () => {
   return (

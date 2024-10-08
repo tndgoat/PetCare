@@ -12,7 +12,7 @@ const LandingScreen = ({navigation}: any) => {
       {/* Top Section: Logo and Text */}
       <View style={localStyles.topSection}>
         <Image
-          source={require('../../assets/logo.png')}
+          source={require('../../assets/text-logo-p.png')}
           style={localStyles.logo}
         />
         <TextComponent

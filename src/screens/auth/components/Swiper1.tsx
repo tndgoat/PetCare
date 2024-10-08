@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View, Dimensions} from 'react-native';
+import {Image, View} from 'react-native';
 import {TextComponent, SectionComponent} from '../../../components';
 import {appColor} from '../../../constants/appColor';
 import {appInfo} from '../../../constants/appInfo';
@@ -23,7 +23,7 @@ const Swiper1 = () => {
             flex: 1,
             resizeMode: 'contain',
             width: '100%',
-            height: '100%', // Thêm chiều cao để giữ nguyên tỷ lệ
+            height: '100%',
           }}
         />
       </View>
@@ -32,7 +32,7 @@ const Swiper1 = () => {
         styles={[
           {
             paddingTop: 24,
-            marginTop: HEIGHT * 0.5, // Điều chỉnh lại để phù hợp với kích thước mới
+            marginTop: HEIGHT * 0.5,
             alignItems: 'center',
           },
         ]}>

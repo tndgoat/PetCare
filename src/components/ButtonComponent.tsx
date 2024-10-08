@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import React, { ReactNode } from 'react';
+import React, {ReactNode} from 'react';
 import TextComponent from './TextComponent';
-import { globalStyles } from '../styles/globalStyles';
-import { appColor } from '../constants/appColor';
-import { fontFamily } from '../constants/fontFamily';
+import {globalStyles} from '../styles/globalStyles';
+import {appColor} from '../constants/appColor';
+import {fontFamily} from '../constants/fontFamily';
 
 interface Props {
   icon?: ReactNode;
@@ -42,28 +42,33 @@ const ButtonComponent = (props: Props) => {
   } = props;
 
   const dynamicTextStyles = {
-    marginLeft: icon ? 12 : 0,
+    marginLeft: icon ? 0 : 0,
   };
 
   return type === 'primary' ? (
-    <View style={localStyles.center}>
-      <TouchableOpacity
-        disabled={disable}
-        onPress={onPress}
-        style={[
-          globalStyles.button,
-          globalStyles.shadow,
-          {
-            backgroundColor: color
-              ? color
-              : disable
-                ? appColor.gray4
-                : appColor.primary,
-          },
-          localStyles.button,
-          styles,
-        ]}>
-        {icon && iconFlex === 'left' && icon}
+    <TouchableOpacity
+      disabled={disable}
+      onPress={onPress}
+      style={[
+        globalStyles.button,
+        globalStyles.shadow,
+        {
+          backgroundColor: color
+            ? color
+            : disable
+              ? appColor.gray4
+              : appColor.primary,
+        },
+        localStyles.button,
+        styles,
+      ]}>
+      <View
+        style={{
+          flexDirection: iconFlex === 'right' ? 'row' : 'row-reverse',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        {icon}
         <TextComponent
           text={text}
           color={textColor ?? appColor.white}
@@ -71,9 +76,8 @@ const ButtonComponent = (props: Props) => {
           flex={icon && iconFlex === 'right' ? 1 : 0}
           font={textFont ?? fontFamily.medium}
         />
-        {icon && iconFlex === 'right' && icon}
-      </TouchableOpacity>
-    </View>
+      </View>
+    </TouchableOpacity>
   ) : (
     <TouchableOpacity onPress={onPress}>
       <TextComponent

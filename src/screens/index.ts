@@ -4,8 +4,11 @@ import LandingScreen from './auth/LandingScreen';
 import LoginScreen from './auth/LoginScreen';
 import SignUpScreen from './auth/SignUpScreen';
 import HomeScreen from './home/HomeScreen';
-import NotifiScreen from './notifi/NotifiScreen';
+import FeedsScreen from './feeds/FeedsScreen';
+import ClinicScreen from './clinic/ClinicScreen';
+import ScheduleScreen from './schedule/ScheduleScreen';
 import ProfileScreen from './profile/ProfileScreen';
+import NotifiScreen from './notifi/NotifiScreen';
 
 export {
   SplashScreen,
@@ -14,6 +17,9 @@ export {
   LoginScreen,
   SignUpScreen,
   HomeScreen,
-  NotifiScreen,
+  FeedsScreen,
+  ClinicScreen,
+  ScheduleScreen,
   ProfileScreen,
+  NotifiScreen,
 };

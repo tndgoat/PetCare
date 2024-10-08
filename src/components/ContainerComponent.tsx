@@ -66,7 +66,7 @@ const ContainerComponent = (props: Props) => {
 
   return isImageBackground ? (
     <ImageBackground
-      source={require('../assets/images/splash.png')}
+      source={require('../../assets/solid_white.png')}
       style={localStyles.flex1}
       imageStyle={localStyles.flex1}>
       <SafeAreaView style={localStyles.flex1}>{headerComponent()}</SafeAreaView>

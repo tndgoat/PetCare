@@ -43,7 +43,7 @@ const LoginScreen = ({navigation}: any) => {
       try {
         const res = await authenticationAPI.HandleAuthentication(
           '/login',
-          {email, password},
+          {email, password, expiresInMins: 30},
           'post',
         );
 
