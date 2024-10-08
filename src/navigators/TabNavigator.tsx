@@ -1,9 +1,9 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React, { ReactNode } from 'react';
 import HomeNavigator from './HomeNavigator';
 import NotifiNavigator from './NotifiNavigator';
 import ProfileNavigator from './ProfileNavigator';
 import { appColor } from '../constants/appColor';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { User } from 'iconsax-react-native';
 import { TextComponent } from '../components';
 import { Platform } from 'react-native';

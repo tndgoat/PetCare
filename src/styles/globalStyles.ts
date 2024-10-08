@@ -1,17 +1,19 @@
-import { StyleSheet } from 'react-native';
-import { appColor } from '../constants/appColor';
-import { fontFamily } from '../constants/fontFamily';
+import {StyleSheet} from 'react-native';
+import {appColor} from '../constants/appColor';
+import {fontFamily} from '../constants/fontFamily';
 
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: appColor.white,
   },
+
   text: {
     fontFamily: fontFamily.regular,
     fontSize: 14,
     color: appColor.text,
   },
+
   button: {
     borderRadius: 12,
     justifyContent: 'center',
@@ -21,6 +23,7 @@ export const globalStyles = StyleSheet.create({
     paddingVertical: 16,
     flexDirection: 'row',
   },
+
   shadow: {
     shadowColor: 'rgba(0,0,0,0.5)',
     shadowOffset: {
@@ -31,15 +34,18 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 6,
   },
+
   section: {
     paddingHorizontal: 16,
     paddingBottom: 20,
   },
+
   row: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
+
   iconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -48,6 +54,7 @@ export const globalStyles = StyleSheet.create({
     height: 30,
     borderRadius: 100,
   },
+
   tag: {
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -55,6 +62,7 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 100,
     marginRight: 12,
   },
+
   card: {
     padding: 12,
     borderRadius: 12,
