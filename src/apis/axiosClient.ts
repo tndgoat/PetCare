@@ -1,6 +1,6 @@
 import axios from 'axios';
 import queryString from 'query-string';
-import { appInfo } from '../constants/appInfo';
+import {appInfo} from '../constants/appInfo';
 import store from '../redux/store';
 
 const axiosClient = axios.create({
@@ -11,11 +11,11 @@ const axiosClient = axios.create({
 axiosClient.interceptors.request.use(
   async (config: any) => {
     const state = store.getState();
-    const token = state.authReducer.authData.token;
+    const accessToken = state.authReducer.authData.accessToken;
 
-    if (token) {
+    if (accessToken) {
       config.headers = {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${accessToken}`,
         Accept: 'application/json',
         ...config.headers,
       };
@@ -25,7 +25,7 @@ axiosClient.interceptors.request.use(
   },
   error => {
     return Promise.reject(error);
-  }
+  },
 );
 
 axiosClient.interceptors.response.use(
@@ -38,7 +38,7 @@ axiosClient.interceptors.response.use(
   error => {
     console.log(`Error api ${JSON.stringify(error.response)}`);
     return Promise.reject(error);
-  }
+  },
 );
 
 export default axiosClient;

@@ -1,12 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {SafeAreaView, View, Text} from 'react-native';
+import {globalStyles} from '../../styles/globalStyles';
 
 const SignUpScreen = () => {
   return (
-    <View>
-      <Text>SignUpScreen</Text>
-    </View>
-  )
-}
+    <SafeAreaView style={globalStyles.container}>
+      <View style={globalStyles.center}>
+        <Text>SignUpScreen</Text>
+      </View>
+    </SafeAreaView>
+  );
+};
 
-export default SignUpScreen
+export default SignUpScreen;

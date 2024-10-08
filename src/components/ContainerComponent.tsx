@@ -6,13 +6,13 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import React, { ReactNode } from 'react';
-import { globalStyles } from '../styles/globalStyles';
-import { useNavigation } from '@react-navigation/native';
-import { RowComponent, TextComponent } from '.';
-import { ArrowLeft } from 'iconsax-react-native';
-import { appColor } from '../constants/appColor';
-import { fontFamily } from '../constants/fontFamily';
+import React, {ReactNode} from 'react';
+import {globalStyles} from '../styles/globalStyles';
+import {useNavigation} from '@react-navigation/native';
+import {RowComponent, TextComponent} from '.';
+import {ArrowLeft} from 'iconsax-react-native';
+import {appColor} from '../constants/appColor';
+import {fontFamily} from '../constants/fontFamily';
 
 interface Props {
   isImageBackground?: boolean;
@@ -23,7 +23,7 @@ interface Props {
 }
 
 const ContainerComponent = (props: Props) => {
-  const { children, isScroll, isImageBackground, title, back } = props;
+  const {children, isScroll, isImageBackground, title, back} = props;
 
   const navigation: any = useNavigation();
 
@@ -66,7 +66,7 @@ const ContainerComponent = (props: Props) => {
 
   return isImageBackground ? (
     <ImageBackground
-      source={require('../assets/images/splash-img.png')}
+      source={require('../assets/images/splash.png')}
       style={localStyles.flex1}
       imageStyle={localStyles.flex1}>
       <SafeAreaView style={localStyles.flex1}>{headerComponent()}</SafeAreaView>

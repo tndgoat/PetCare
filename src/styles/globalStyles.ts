@@ -8,6 +8,11 @@ export const globalStyles = StyleSheet.create({
     backgroundColor: appColor.white,
   },
 
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   text: {
     fontFamily: fontFamily.regular,
     fontSize: 14,

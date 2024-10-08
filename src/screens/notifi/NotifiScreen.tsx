@@ -1,12 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {SafeAreaView, View, Text} from 'react-native';
+import {globalStyles} from '../../styles/globalStyles';
 
 const NotifiScreen = () => {
   return (
-    <View>
-      <Text>NotifiScreen</Text>
-    </View>
-  )
-}
+    <SafeAreaView style={globalStyles.container}>
+      <View style={globalStyles.center}>
+        <Text>NotifiScreen</Text>
+      </View>
+    </SafeAreaView>
+  );
+};
 
-export default NotifiScreen
+export default NotifiScreen;

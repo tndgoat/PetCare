@@ -1,14 +1,14 @@
 import React from 'react';
-import { Facebook, Google, Apple } from '../../../assets/svgs';
+import {Facebook, Google, Apple} from '../../../assets/svgs';
 import {
   ButtonComponent,
   SectionComponent,
   SpaceComponent,
   TextComponent,
 } from '../../../components';
-import { appColor } from '../../../constants/appColor';
-import { fontFamily } from '../../../constants/fontFamily';
-import { StyleSheet } from 'react-native';
+import {appColor} from '../../../constants/appColor';
+import {fontFamily} from '../../../constants/fontFamily';
+import {StyleSheet} from 'react-native';
 
 const SocialLogin = () => {
   return (

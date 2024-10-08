@@ -1,18 +1,21 @@
-import { ArrowRight2 } from 'iconsax-react-native';
-import React, { useEffect, useState } from 'react';
-import { StatusBar, View } from 'react-native';
+import {ArrowRight2} from 'iconsax-react-native';
+import React, {useEffect, useState} from 'react';
+import {StatusBar, View} from 'react-native';
 import Swiper from 'react-native-swiper';
-import { appColor } from '../../constants/appColor';
-import { globalStyles } from '../../styles/globalStyles';
+import {appColor} from '../../constants/appColor';
+import {globalStyles} from '../../styles/globalStyles';
 import Swiper1 from './components/Swiper1';
 import Swiper2 from './components/Swiper2';
 import Swiper3 from './components/Swiper3';
-import { useIsFocused } from '@react-navigation/native';
-import { SectionComponent, RowComponent, ButtonComponent } from '../../components';
+import {useIsFocused} from '@react-navigation/native';
+import {
+  SectionComponent,
+  RowComponent,
+  ButtonComponent,
+} from '../../components';
+import LandingScreen from './LandingScreen';
 
-const OnboardingScreen = ({ navigation, route }: any) => {
-  const { authState } = route.params;
-
+const OnboardingScreen = ({navigation}: any) => {
   const [index, setIndex] = useState(0);
 
   const isFocused = useIsFocused();
@@ -22,7 +25,7 @@ const OnboardingScreen = ({ navigation, route }: any) => {
   }, [isFocused]);
 
   return (
-    <View style={[globalStyles.container, { paddingTop: 20 }]}>
+    <View style={[globalStyles.container, {paddingTop: 20}]}>
       <StatusBar hidden />
       <Swiper
         index={index}
@@ -36,12 +39,13 @@ const OnboardingScreen = ({ navigation, route }: any) => {
       <SectionComponent>
         <RowComponent justify="space-between">
           <RowComponent>
-            {Array.from({ length: 3 }).map((_item, ind) => (
+            {Array.from({length: 3}).map((_item, ind) => (
               <View
                 key={`dot${ind}`}
                 style={{
                   height: 6,
-                  backgroundColor: ind === index ? appColor.primary : appColor.gray2,
+                  backgroundColor:
+                    ind === index ? appColor.primary : appColor.gray2,
                   borderRadius: 100,
                   marginRight: 4,
                   width: ind === index ? 16 : 6,
@@ -51,14 +55,16 @@ const OnboardingScreen = ({ navigation, route }: any) => {
           </RowComponent>
           <ButtonComponent
             color={appColor.primary}
-            text=''
+            text=""
             styles={{
               width: 50,
               height: 50,
             }}
             icon={<ArrowRight2 size={24} color="white" />}
             onPress={() =>
-              index === 2 ? navigation.navigate(authState) : setIndex(index + 1)
+              index === 2
+                ? navigation.navigate(LandingScreen)
+                : setIndex(index + 1)
             }
           />
         </RowComponent>

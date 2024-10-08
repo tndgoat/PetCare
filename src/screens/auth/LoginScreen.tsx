@@ -1,6 +1,6 @@
-import { Lock, Sms } from 'iconsax-react-native';
-import React, { useEffect, useState } from 'react';
-import { Alert, Image, Switch } from 'react-native';
+import {Lock, Sms} from 'iconsax-react-native';
+import React, {useEffect, useState} from 'react';
+import {Alert, Image, Switch} from 'react-native';
 import authenticationAPI from '../../apis/authApi';
 import {
   ButtonComponent,
@@ -11,16 +11,16 @@ import {
   SpaceComponent,
   TextComponent,
 } from '../../components';
-import { appColor } from '../../constants/appColor';
-import { Validate } from '../../utils/validates';
+import {appColor} from '../../constants/appColor';
+import {Validate} from '../../utils/validates';
 import SocialLogin from './components/SocialLogin';
-import { useDispatch } from 'react-redux';
-import { addAuth } from '../../redux/reducers/authReducer';
+import {useDispatch} from 'react-redux';
+import {addAuth} from '../../redux/reducers/authReducer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { fontFamily } from '../../constants/fontFamily';
+import {fontFamily} from '../../constants/fontFamily';
 
-const LoginScreen = ({ navigation }: any) => {
-  const [username, setUsername] = useState('');
+const LoginScreen = ({navigation}: any) => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRemember, setIsRemember] = useState(true);
   const [isDisable, setIsDisable] = useState(true);
@@ -28,22 +28,22 @@ const LoginScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const userNameValidation = Validate.username(username);
+    const emailValidation = Validate.email(email);
 
-    if (!username || !password || !userNameValidation) {
+    if (!email || !password || !emailValidation) {
       setIsDisable(true);
     } else {
       setIsDisable(false);
     }
-  }, [username, password]);
+  }, [email, password]);
 
   const handleLogin = async () => {
-    const userNameValidation = Validate.username(username);
-    if (userNameValidation) {
+    const emailValidation = Validate.email(email);
+    if (emailValidation) {
       try {
         const res = await authenticationAPI.HandleAuthentication(
           '/login',
-          { username, password },
+          {email, password},
           'post',
         );
 
@@ -51,31 +51,18 @@ const LoginScreen = ({ navigation }: any) => {
 
         await AsyncStorage.setItem(
           'auth',
-          isRemember ? JSON.stringify(res.data) : username,
+          isRemember ? JSON.stringify(res.data) : email,
         );
       } catch (error) {
         console.log(error);
       }
     } else {
-      Alert.alert('Username is not correct!!!!');
+      Alert.alert('Email is not correct!');
     }
   };
 
   return (
     <ContainerComponent isImageBackground isScroll back>
-      <SectionComponent
-        styles={{
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <Image
-          source={require('../../assets/images/logo.png')}
-          style={{
-            width: 180,
-            height: 90.4,
-          }}
-        />
-      </SectionComponent>
       <SectionComponent>
         <TextComponent
           size={24}
@@ -83,13 +70,13 @@ const LoginScreen = ({ navigation }: any) => {
           text="Login"
           font={fontFamily.semiBold}
           color={appColor.text1}
-          styles={{ textAlign: 'center' }}
+          styles={{textAlign: 'center'}}
         />
         <SpaceComponent height={21} />
         <InputComponent
-          value={username}
-          placeholder="Enter your username"
-          onChange={val => setUsername(val)}
+          value={email}
+          placeholder="Enter your email"
+          onChange={val => setEmail(val)}
           allowClear
           affix={<Sms size={22} color={appColor.gray} />}
         />
@@ -104,7 +91,7 @@ const LoginScreen = ({ navigation }: any) => {
         <RowComponent justify="space-between">
           <RowComponent onPress={() => setIsRemember(!isRemember)}>
             <Switch
-              trackColor={{ true: appColor.primary }}
+              trackColor={{true: appColor.primary}}
               thumbColor={appColor.white}
               value={isRemember}
               onChange={() => setIsRemember(!isRemember)}

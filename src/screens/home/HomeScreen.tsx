@@ -1,12 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import {SafeAreaView, View, Text} from 'react-native';
+import {globalStyles} from '../../styles/globalStyles';
 
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
-    </View>
-  )
-}
+    <SafeAreaView style={globalStyles.container}>
+      <View style={globalStyles.center}>
+        <Text>HomeScreen</Text>
+      </View>
+    </SafeAreaView>
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;

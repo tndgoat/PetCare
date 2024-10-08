@@ -1,18 +1,18 @@
 import React from 'react';
-import { Image, View, StyleSheet } from 'react-native';
-import { appColor } from '../../constants/appColor';
-import { appInfo } from '../../constants/appInfo';
-import { globalStyles } from '../../styles/globalStyles';
-import { ButtonComponent, TextComponent } from '../../components';
-import { fontFamily } from '../../constants/fontFamily';
+import {Image, View, StyleSheet} from 'react-native';
+import {appColor} from '../../constants/appColor';
+import {appInfo} from '../../constants/appInfo';
+import {globalStyles} from '../../styles/globalStyles';
+import {ButtonComponent, TextComponent} from '../../components';
+import {fontFamily} from '../../constants/fontFamily';
 
-const LandingScreen = ({ navigation }: any) => {
+const LandingScreen = ({navigation}: any) => {
   return (
     <View style={[globalStyles.container, localStyles.container]}>
       {/* Top Section: Logo and Text */}
       <View style={localStyles.topSection}>
         <Image
-          source={require('../../assets/images/logo.png')}
+          source={require('../../assets/logo.png')}
           style={localStyles.logo}
         />
         <TextComponent
