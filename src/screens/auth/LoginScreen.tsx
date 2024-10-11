@@ -99,7 +99,11 @@ const LoginScreen = ({navigation}: any) => {
             <SpaceComponent width={4} />
             <TextComponent text="Remember me" />
           </RowComponent>
-          <ButtonComponent text="Forgot Password?" type="text" />
+          <ButtonComponent
+            text="Forgot Password?"
+            type="link"
+            textColor={appColor.primary}
+          />
         </RowComponent>
       </SectionComponent>
       <SpaceComponent height={16} />

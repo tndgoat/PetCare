@@ -1,14 +1,14 @@
-import { View, Modal, ActivityIndicator, StyleSheet } from 'react-native';
+import {View, Modal, ActivityIndicator, StyleSheet} from 'react-native';
 import React from 'react';
-import { TextComponent } from '../components';
-import { appColor } from '../constants/appColor';
+import {TextComponent} from '../components';
+import {appColor} from '../constants/appColor';
 
 interface Props {
   visible: boolean;
 }
 
 const LoadingModal = (props: Props) => {
-  const { visible } = props;
+  const {visible} = props;
 
   return (
     <Modal visible={visible} transparent statusBarTranslucent>
