@@ -100,7 +100,7 @@ const localStyles = StyleSheet.create({
     width: '90%',
   },
   text: {
-    fontSize: 16,
+    // fontSize: 16,
     textAlign: 'center',
   },
 });

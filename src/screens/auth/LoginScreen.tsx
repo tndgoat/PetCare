@@ -1,6 +1,6 @@
 import {Lock, Sms} from 'iconsax-react-native';
 import React, {useEffect, useState} from 'react';
-import {Alert, Image, Switch} from 'react-native';
+import {Alert, Switch} from 'react-native';
 import authenticationAPI from '../../apis/authApi';
 import {
   ButtonComponent,
