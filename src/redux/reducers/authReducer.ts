@@ -1,35 +1,51 @@
 import {createSlice} from '@reduxjs/toolkit';
+import type {PayloadAction} from '@reduxjs/toolkit';
 
-interface AuthState {
+export interface UserState {
   id: string;
   email: string;
-  accessToken: string;
-  refreshToken: string;
+  accessTokenStore: string | null;
 }
 
-const initialState: AuthState = {
+const initialState: UserState = {
   id: '',
   email: '',
-  accessToken: '',
-  refreshToken: '',
+  accessTokenStore: null,
 };
 
-const authSlice = createSlice({
-  name: 'auth',
-  initialState: {
-    authData: initialState,
-  },
+export const userSlice = createSlice({
+  name: 'user',
+  initialState,
   reducers: {
-    addAuth: (state, action) => {
-      state.authData = action.payload;
+    setUserEmail: (state, action: PayloadAction<string>) => {
+      state.email = action.payload;
     },
-    removeAuth: state => {
-      state.authData = initialState;
+    clearUserEmail: state => {
+      state.email = '';
+    },
+    setUserId: (state, action: PayloadAction<string>) => {
+      state.id = action.payload;
+    },
+    clearUserId: state => {
+      state.id = '';
+    },
+    clearUser: (state, action: PayloadAction<UserState>) => {
+      state = initialState;
+    },
+    setAccessTokenStore: (state, action: PayloadAction<string | null>) => {
+      state.accessTokenStore = action.payload;
     },
   },
 });
 
-export const authReducer = authSlice.reducer;
-export const {addAuth, removeAuth} = authSlice.actions;
+// Action creators are generated for each case reducer function
+export const {
+  setUserEmail,
+  clearUserEmail,
+  setUserId,
+  clearUserId,
+  clearUser,
+  setAccessTokenStore,
+} = userSlice.actions;
 
-export const authSelector = (state: any) => state.authReducer.authData;
+export default userSlice.reducer;

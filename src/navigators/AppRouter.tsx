@@ -35,7 +35,7 @@ const AppRouters = () => {
     <>
       {isShowSplash ? (
         <SplashScreen />
-      ) : 1 < 2 ? (
+      ) : 1 > 2 ? (
         <MainNavigator />
       ) : (
         <AuthNavigator />
